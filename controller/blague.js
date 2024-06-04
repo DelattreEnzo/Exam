@@ -18,6 +18,15 @@ const controllerBlague = {
     }
   },
 
+  create: async (req, res) => {
+    console.log(req.body);
+    const data = await Blague.create(req.body);
+    console.log(data);
+    res
+      .status(201)
+      .json({ message: "votre blague a été ajoutée", data: req.body });
+  },
+
   findById: (req, res) => {
     const id = req.params.id;
     if (isNaN(id)) {
